@@ -1,15 +1,18 @@
 $(function() {
-	//solving active 
-	switch(menu){
-	case 'About Us' :
+	// solving active
+	switch (menu) {
+	case 'About Us':
 		$('#about').addClass('active');
 		break;
-	case 'Contact Us' :
+	case 'Contact Us':
 		$('#contact').addClass('active');
 		break;
-	default :
-		$('#home').addClass('active');
-	break;
+	case 'All Products':
+		$('#listProducts').addClass('active');
+	default:
+		$('#listProducts').addClass('active');
+		$('#a_'+menu).addClass('active');
+		break;
 	}
 }
 
