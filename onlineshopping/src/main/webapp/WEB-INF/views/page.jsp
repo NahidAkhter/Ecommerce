@@ -65,7 +65,8 @@
 		</div>
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
-
+		
+		<script src="${js}/jquery.js"></script>
 		<script src="${js}/jquery.min.js" type="text/javascript"></script>
 		<script src="${js}/popper.min.js" type="text/javascript"></script>
 		<script src="${js}/bootstrap.min.js" type="text/javascript"></script>

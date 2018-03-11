@@ -12,7 +12,6 @@ import com.back.shoppingbackend.dto.Category;
 @Controller
 public class pageController {
 
-	@Autowired
 	private CategoryDAO categoryDAO;
 
 	@RequestMapping(value = { "/", "/home", "index" })
@@ -53,7 +52,7 @@ public class pageController {
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "All products");
 
-		// passing list of category
+		// passing list of categories
 		mv.addObject("categories", categoryDAO.list());
 
 		mv.addObject("userClickAllProducts", true);
@@ -70,10 +69,10 @@ public class pageController {
 		category = categoryDAO.getId(id);
 		mv.addObject("title", category.getName());
 
-		// passing list of category
+		// passing list of categories
 		mv.addObject("categories", categoryDAO.list());
 
-		// passing list of category
+		// passing single category object
 		mv.addObject("category", category);
 
 		mv.addObject("userClickCategoryProducts", true);

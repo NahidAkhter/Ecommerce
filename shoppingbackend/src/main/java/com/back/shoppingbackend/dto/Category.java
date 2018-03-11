@@ -1,16 +1,33 @@
 package com.back.shoppingbackend.dto;
 
-public class Category {
-	/*
-	 * private fields
-	 * */
-	
+
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+@Entity
+@Table(name = "CATEGORY",
+uniqueConstraints = { @UniqueConstraint(columnNames = { "id" }) })
+public class Category implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int id;
+
+	@Column(name="name")
 	private String name;
+	@Column(name="description")
 	private String description;
+	@Column(name= "image_url")
 	private String imageURL;
+
+	@Column(name= "is_active")
 	private boolean active = true;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -41,4 +58,11 @@ public class Category {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", description=" + description + ", imageURL=" + imageURL
+				+ ", active=" + active + "]";
+	}
+
+
 }

@@ -15,7 +15,6 @@
 
 					<c:if test="${userClickAllProducts == true}">
 						<ol class="breadcrumb">
-
 							<li><a href="${contextRoot}/home">Home</a></li>
 							<li class="active">All Products</li>
 

@@ -9,6 +9,7 @@ $(function() {
 		break;
 	case 'All Products':
 		$('#listProducts').addClass('active');
+		break;
 	default:
 		$('#listProducts').addClass('active');
 		$('#a_'+menu).addClass('active');
