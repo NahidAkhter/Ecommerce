@@ -4,29 +4,27 @@ package com.back.shoppingbackend.dto;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "CATEGORY",
-uniqueConstraints = { @UniqueConstraint(columnNames = { "id" }) })
+@Table
 public class Category implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name="name")
 	private String name;
-	@Column(name="description")
 	private String description;
 	@Column(name= "image_url")
 	private String imageURL;
 
 	@Column(name= "is_active")
-	private boolean active = true;
+	private char active = 'Y';
 
 	public int getId() {
 		return id;
@@ -52,17 +50,12 @@ public class Category implements Serializable{
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
 	}
-	public boolean isActive() {
+	
+	public char getActive() {
 		return active;
 	}
-	public void setActive(boolean active) {
+	public void setActive(char active) {
 		this.active = active;
 	}
-	@Override
-	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", description=" + description + ", imageURL=" + imageURL
-				+ ", active=" + active + "]";
-	}
-
 
 }

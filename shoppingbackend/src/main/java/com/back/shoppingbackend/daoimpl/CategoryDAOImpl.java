@@ -1,6 +1,5 @@
 package com.back.shoppingbackend.daoimpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -13,61 +12,26 @@ import com.back.shoppingbackend.dto.Category;
 
 
 @Repository("categoryDAO")
+@Transactional
 public class CategoryDAOImpl implements CategoryDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	private static List<Category> categories = new ArrayList<>();
-
-	static {
-		Category category = new Category();
-		// adding categories
-		// 1
-		category.setId(1);
-		category.setName("Television");
-		category.setDescription("This is a description of television");
-		category.setImageURL("CAT_1.png");
-
-		categories.add(category);
-
-		// 2 category
-		category = new Category();
-		category.setId(2);
-		category.setName("Mobile");
-		category.setDescription("This is a description of Mobile!");
-		category.setImageURL("CAT_2.png");
-		categories.add(category);
-		
-		// 3
-		category = new Category();
-		category.setId(3);
-		category.setName("Laptop");
-		category.setDescription("This is a description of Laptop!");
-		category.setImageURL("CAT_3.png");
-
-		categories.add(category);
-
-	}
 
 	@Override
 	public List<Category> list() {
-		return categories;
+		return null;
 	}
 
+	/*
+	 * Getting Single category based on id
+	 * */
 	@Override
 	public Category getId(int id) {
-		for(Category category : categories){
-			if(category.getId() == id){
-				return category;
-			}
-		}
-		return null;
-		
+		return sessionFactory.getCurrentSession().get(Category.class, Integer.valueOf(id));
 	}
 
 	@Override
-	@Transactional
 	public boolean add(Category category) {
 		
 		try{
@@ -80,6 +44,18 @@ public class CategoryDAOImpl implements CategoryDAO {
 		}
 		
 		
+	}
+
+	@Override
+	public boolean update(Category category) {
+		
+		return false;
+	}
+
+	@Override
+	public boolean delete(Category category) {
+		
+		return false;
 	}
 
 }

@@ -11,6 +11,7 @@
 	<properties>
 		<javaee.version>7.0</javaee.version>
 		<spring-version>4.3.10.RELEASE</spring-version>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
 	</properties>
 
 	<dependencies>

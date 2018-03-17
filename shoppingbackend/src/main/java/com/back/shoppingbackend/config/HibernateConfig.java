@@ -8,14 +8,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.back.shoppingbackend.dto.Category;
-
 @Configuration
-@ComponentScan(basePackages="com.back.shoppingbackend")
+@ComponentScan(basePackages="com.back.shoppingbackend.dto")
 @EnableTransactionManagement
 public class HibernateConfig {
 	private final static String DATABASE_URL = "jdbc:oracle:thin:@//Nahid-HP:1522/CIRRUS";
@@ -60,10 +57,9 @@ public class HibernateConfig {
 	}
 	
 	@Bean
-	public HibernateTransactionManager getTransactionManager(){
+	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory ){
 		System.out.println("-------------Inside getTransactionManager-----------");
-		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-		transactionManager.setSessionFactory(getSessionFactory().getObject());
+		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
 		return transactionManager;
 	}
 	

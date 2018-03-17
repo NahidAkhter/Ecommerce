@@ -22,26 +22,34 @@ public class CategoryTestCase {
 		public static void init(){
 			System.out.println("------------Inside Init()------------");
 			context = new AnnotationConfigApplicationContext();
-			context.scan("com.back.shoppingbackend.");
+			context.scan("com.back.shoppingbackend");
 			System.out.println("------------Inside categorytestCase before referesh------------");
-			System.out.println("value of :" + context);
+			//System.out.println("value of :" + context);
 			context.refresh();
 			System.out.println("------------Inside categorytestCase after refresh------------");
 			categoryDAO = (CategoryDAO) context.getBean("categoryDAO");
 		}
 		
-		@Test
+		/*@Test
 		public void testAddCategory(){
 			System.out.println("------------Inside testAddCategory ");
 			category = new Category();
-			category.setId(1);
 			category.setName("Television");
 			category.setDescription("This is a description of television");
 			category.setImageURL("CAT_1.png");
-			
+			System.out.println("------------Inside TEST-------------------- ");
 			assertEquals("Successfully added a category inside the table! ", true, categoryDAO.add(category));
 			
 			
 			
+		}*/
+		
+		@Test
+		public void getCategory(){
+			category = categoryDAO.getId(5);
+			assertEquals("Successfully fetched a single category from the table! ", "Television" , category.getName());
 		}
+		
+		
+		
 }
