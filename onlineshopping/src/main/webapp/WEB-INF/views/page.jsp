@@ -22,6 +22,7 @@
 
 <script>
 	window.menu = '${title}';
+	window.contextRoot = '${contextRoot}';
 </script>
 
 <!-- Bootstrap core CSS -->
@@ -29,6 +30,9 @@
 
 <!-- Bootstrap Readable CSS -->
 <link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
+
+<!-- Bootstrap DataTable-->
+<link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
@@ -70,6 +74,13 @@
 		<script src="${js}/jquery.min.js" type="text/javascript"></script>
 		<script src="${js}/popper.min.js" type="text/javascript"></script>
 		<script src="${js}/bootstrap.min.js" type="text/javascript"></script>
+		
+		<!-- Datatable Plugins -->
+		<script src="${js}/jquery.dataTables.js"></script>
+		
+		<%-- <!-- Datatable Plugins -->
+		<script src="${js}/dataTables.bootstrap.js"></script> --%>
+		
 		<script src="${js}/myapp.js" type="text/javascript"></script>
 	</div>
 </body>

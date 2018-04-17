@@ -24,7 +24,7 @@ public class Category implements Serializable{
 	private String imageURL;
 
 	@Column(name= "is_active")
-	private char active = 'Y';
+	private boolean active = true;
 
 	public int getId() {
 		return id;
@@ -50,12 +50,11 @@ public class Category implements Serializable{
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
 	}
-	
-	public char getActive() {
+	public boolean isActive() {
 		return active;
 	}
-	public void setActive(char active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
-
+	
 }
