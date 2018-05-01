@@ -3,6 +3,7 @@ package com.back.shoppingbackend.daoimpl;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +21,10 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	@Override
 	public List<Category> list() {
-		return null;
+		String selectActiveCategory  = "FROM Category WHERE active = :active";
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
+		query.setParameter("active", true);
+		return query.getResultList();
 	}
 
 	/*
@@ -33,7 +37,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	@Override
 	public boolean add(Category category) {
-		
 		try{
 			sessionFactory.getCurrentSession().persist(category);
 			return true;
@@ -41,21 +44,36 @@ public class CategoryDAOImpl implements CategoryDAO {
 			System.out.println("Catched exception");
 			e.printStackTrace();
 			return false;
-		}
-		
-		
+		}		
 	}
 
+	/*
+	 * updating a single category*/
 	@Override
 	public boolean update(Category category) {
-		
-		return false;
+
+		try{
+			sessionFactory.getCurrentSession().update(category);
+			return true;
+		} catch(Exception e){
+			System.out.println("Catched exception");
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override
 	public boolean delete(Category category) {
-		
-		return false;
+
+		category.setActive(false);
+		try{
+			sessionFactory.getCurrentSession().update(category);
+			return true;
+		} catch(Exception e){
+			System.out.println("Catched exception");
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }
