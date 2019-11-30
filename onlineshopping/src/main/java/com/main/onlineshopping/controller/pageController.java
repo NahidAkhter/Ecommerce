@@ -19,8 +19,6 @@ public class pageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(pageController.class);
 	
-	//do not delete this
-	
 	@Autowired
 	private CategoryDAO categoryDAO;
 	
